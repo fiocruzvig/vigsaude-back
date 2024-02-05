@@ -1,11 +1,8 @@
 # example/views.py
-from datetime import datetime
-
 from django.http import HttpResponse
+import json
 
 def index(request):
-    return HttpResponse({ 
-    "name":"John", 
-    "age":30, 
-    "car":None 
-})
+    data = {'key': 'value'}
+    response_data = json.dumps(data)
+    return HttpResponse(response_data, content_type="application/json")
