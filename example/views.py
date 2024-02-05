@@ -4,5 +4,8 @@ from datetime import datetime
 from django.http import HttpResponse
 
 def index(request):
-    
-    return HttpResponse("Sejam bem-vindos!")
+    return HttpResponse({ 
+    "name":"John", 
+    "age":30, 
+    "car":None 
+})
