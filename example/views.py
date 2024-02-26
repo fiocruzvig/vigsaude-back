@@ -2,10 +2,10 @@
 from django.http import HttpResponse
 import json
 import requests
-from django.views.decorators.csrf import csrf_exempt
+#from django.views.decorators.csrf import csrf_exempt
 
 
-@csrf_exempt
+#@csrf_exempt
 def index(request):
     print(request)
     if request.method == 'POST':
