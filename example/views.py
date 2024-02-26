@@ -13,6 +13,8 @@ def index(request):
         print("Aqui")
         response_data = json.dumps(data)
         return HttpResponse(response_data, content_type="application/json")
+    return HttpResponse("Olá")
+
     # data = {'key': 'GET'}
     #r = requests.get('https://jsonplaceholder.typicode.com/users')
     #print(r)
