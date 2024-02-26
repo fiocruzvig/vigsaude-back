@@ -1,7 +1,6 @@
 # example/views.py
 from django.http import HttpResponse
 import json
-import requests
 
 def index(request):
     data = {'key': 'valor'}
