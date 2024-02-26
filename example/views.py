@@ -1,7 +1,7 @@
 # example/views.py
 from django.http import HttpResponse
 import json
-import requests
+#import requests
 #from django.views.decorators.csrf import csrf_exempt
 
 
