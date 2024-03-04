@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
-def index(request):
+def login(request):
     
     if request.method == 'POST':
         data = {'key': 'POST'}
@@ -14,7 +14,10 @@ def index(request):
         response_data = json.dumps(data)
         return HttpResponse(response_data, content_type="application/json")
     
-    return HttpResponse("Olá")
+    data = {'key': 'GET'}
+
+    response_data = json.dumps(data)
+    return HttpResponse(response_data, content_type="application/json")
 
     # data = {'key': 'GET'}
     #r = requests.get('https://jsonplaceholder.typicode.com/users')
