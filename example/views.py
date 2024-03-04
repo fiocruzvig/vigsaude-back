@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 import json
 #import requests
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -9,20 +10,13 @@ from django.views.decorators.csrf import csrf_exempt
 def login(request):
     
     if request.method == 'POST':
-        data = {'key': 'POST'}
-        print("Aqui")
-        response_data = json.dumps(data)
-        return HttpResponse(response_data, content_type="application/json")
+        response = JsonResponse({'key': 'POST'})    
+        #print(request["usuario"])
+        return HttpResponse(response, content_type="application/json")
     
-    data = {'key': 'GET'}
+  
+    response = JsonResponse({'key': 'GET'}) 
+ 
+    return HttpResponse(response, content_type="application/json")
 
-    response_data = json.dumps(data)
-    return HttpResponse(response_data, content_type="application/json")
-
-    # data = {'key': 'GET'}
-    #r = requests.get('https://jsonplaceholder.typicode.com/users')
-    #print(r)
-    #usuarios = r.json()
-    #print(requests)
-    # response_data = json.dumps(data)
-    # return HttpResponse(response_data, content_type="application/json")
+   
