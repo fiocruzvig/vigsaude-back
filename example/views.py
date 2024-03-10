@@ -3,22 +3,17 @@ from django.http import HttpResponse
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 
 @csrf_exempt
+@require_http_methods(["POST"])
 def login(request):
-    
-    if request.method == 'POST':
-
         body_unicode = request.body.decode('utf-8')  
         body = json.loads(body_unicode)       
         response = JsonResponse(body)
-
         return HttpResponse(response, content_type="application/json")
     
   
-    response = JsonResponse({'key': 'GET'}) 
- 
-    return HttpResponse(response, content_type="application/json")
 
    
