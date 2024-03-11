@@ -4,6 +4,8 @@ import json
 
 
 
+'''
+
 
 class LoginFormRequest:
         def __init__(self, request):
@@ -12,6 +14,7 @@ class LoginFormRequest:
 
         def is_valid(self,):
                 return len(self.usuario) == 5 and len(self.senha) == 5
+'''
 
 def require_post(function):
     def wrapped_view(request, *args, **kwargs):
