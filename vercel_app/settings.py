@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'example',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -77,8 +78,19 @@ WSGI_APPLICATION = 'vercel_app.wsgi.app'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Note: Django modules for using databases are not support in serverless
 # environments like Vercel. You can use a database over HTTP, hosted elsewhere.
+'''
+"default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "OPTIONS": {
+            "service": "my_service",
+            "passfile": ".my_pgpass",
+        },
+    }
+'''
 
-DATABASES = {}
+DATABASES = {
+    
+}
 
 
 # Password validation

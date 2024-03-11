@@ -5,7 +5,9 @@ __pycache__
 db.sqlite3
 media
 
-# Environments 
+# Environments
+.my_pgpass
+.pg_service.conf 
 .env 
 .venv 
 env/ 
