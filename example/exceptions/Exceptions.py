@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 import json
+from example.errors.errors import ApiErrors
 from ..LoginFormRequest.loginFormRequest import LoginFormRequest
 
 
@@ -10,14 +11,27 @@ def require_post(function):
         if request.method != 'POST':
             return HttpResponse(JsonResponse({"Status":"Método Inválido"}), content_type="application/json", status=405)
         
+        if not request.body:
+            return HttpResponse(JsonResponse({"field":"Requisição sem Corpo"}), content_type="application/json", status=400)
+
+        
         body_unicode = request.body.decode('utf-8')  
         body = json.loads(body_unicode) 
 
         login_form = LoginFormRequest(body)
         patterns = login_form.patterns
+        list_api_errors = []
+       
+       
         for key in patterns:
-            if not login_form .is_valid(patterns[key], key):
-                return HttpResponse(JsonResponse({"Status":"Dados Inválidos"}), content_type="application/json", status=401)  
+            if not login_form .is_valid(patterns[key][1], key):
+                 list_api_errors.append(ApiErrors(patterns[key][0], "Campo Inválido"))
+
+        if len(list_api_errors) != 0:
+            api_errors_dict = [api.api_errors_to_list() for api in list_api_errors]
+            response = json.dumps(api_errors_dict)
+            json_response = json.loads(response)
+            return HttpResponse(json_response, content_type="application/json", status=400)  
         return function(request, *args, **kwargs)
     return wrapped_view
 
