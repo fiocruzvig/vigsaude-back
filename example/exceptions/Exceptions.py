@@ -6,15 +6,20 @@ from ..LoginFormRequest.loginFormRequest import LoginFormRequest
 
 
 
-def set_errors(api):
-    list_api_errors = []
-    list_api_errors.append(api)
+def set_errors(api, list=None):
+    if  list == None:
+        list_api_errors = []
+        list_api_errors.append(api)
+    
+    
+    
+    
     api_errors_dict = [api.api_errors_to_list() for api in list_api_errors]
-
     response = json.dumps(api_errors_dict)
     json_response = json.loads(response)
+    
     return json_response
-
+    
 
 
 
@@ -25,6 +30,10 @@ def require_post(function):
             json_response = set_errors(ApiErrors("field", "Método HTTP Inválido"))
             return HttpResponse(json_response, content_type="application/json", status=405)
         
+        
+        '''
+        
+      
         if not request.body:
             json_response = set_errors(ApiErrors("field", "Requisição sem Corpo"))
             return HttpResponse(json_response, content_type="application/json", status=400)
@@ -47,6 +56,7 @@ def require_post(function):
             response = json.dumps(api_errors_dict)
             json_response = json.loads(response)
             return HttpResponse(json_response, content_type="application/json", status=400)  
+        '''
         return function(request, *args, **kwargs)
     return wrapped_view
 
