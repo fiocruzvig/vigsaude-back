@@ -9,11 +9,12 @@ class LoginFormRequest():
                 self.password = request["password"]
                 self.patterns = {
                         self.username: ["username", r'^\S{1,}$'],
-                        self.password: ["passoword", r'^\S{8,}$'],
-                        self.email: ["email", r'^\S+@\S+\.\S+$']
+                        self.email: ["email", r'^\S+@\S+\.\S+$'],
+                        self.password: ["password", r'^\S{8,}$'],
+                        
                 }
 
         def is_valid(self, expression, field):
               pattern = re.compile(expression)
-              return re.fullmatch(pattern, field) 
+              return re.match(pattern, field) 
         

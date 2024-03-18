@@ -8,3 +8,5 @@ class ApiErrors:
 
     def api_errors_to_list(self,):
         return {"field": self.field, "mensage": self.mensage}
+    
+    

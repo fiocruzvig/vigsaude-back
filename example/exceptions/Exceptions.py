@@ -22,7 +22,6 @@ def set_errors(api, list=None):
 
 def require_post(function):
     def wrapped_view(request, *args, **kwargs):
-        print("dsadsa")
         
         if request.method != 'POST':
             json_response = set_errors(ApiErrors("field", "Método HTTP Inválido"))
@@ -32,34 +31,24 @@ def require_post(function):
             json_response = set_errors(ApiErrors("field", "Requisição sem Corpo"))
             return HttpResponse(json_response, content_type="application/json", status=400)
 
-        
-        
-        
-        '''
-        
-      
-        if not request.body:
-            
+        else:
+             body_unicode = request.body.decode('utf-8')  
+             body = json.loads(body_unicode) 
+              
+             login_form = LoginFormRequest(body)
+             patterns = login_form.patterns
+             list_api_errors = []
 
+             for key in patterns:
+                 if not login_form.is_valid(patterns[key][1], key):
+                     list_api_errors.append(ApiErrors(patterns[key][0], "Campo Inválido"))
         
-        body_unicode = request.body.decode('utf-8')  
-        body = json.loads(body_unicode) 
-
-        login_form = LoginFormRequest(body)
-        patterns = login_form.patterns
-        list_api_errors = []
-       
-       
-        for key in patterns:
-            if not login_form .is_valid(patterns[key][1], key):
-                 list_api_errors.append(ApiErrors(patterns[key][0], "Campo Inválido"))
-
-        if len(list_api_errors) != 0:
-            api_errors_dict = [api.api_errors_to_list() for api in list_api_errors]
-            response = json.dumps(api_errors_dict)
-            json_response = json.loads(response)
-            return HttpResponse(json_response, content_type="application/json", status=400)  
-        '''
+             if len(list_api_errors) != 0:
+                
+                api_errors_dict = [api.api_errors_to_list() for api in list_api_errors]
+                response = json.dumps(api_errors_dict)
+                json_response = json.loads(response)
+                return HttpResponse(json_response, content_type="application/json", status=400)  
         return function(request, *args, **kwargs)
     return wrapped_view
 
