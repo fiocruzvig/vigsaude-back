@@ -9,7 +9,7 @@ import json
 
 
 @csrf_exempt
-@require_post
+@require_login
 @require_http_methods(["POST"])
 def login(request):
         body_unicode = request.body.decode('utf-8')  

@@ -1,11 +1,10 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 import json
-from example.errors.errors import ApiErrors
-from ..LoginFormRequest.loginFormRequest import LoginFormRequest
+from  example.LoginFormRequest.loginFormRequest import LoginFormRequest
 
 
-def require_post(function):
+def require_login(function):
     def wrapped_view(request, *args, **kwargs):
         
         if request.method != 'POST':
