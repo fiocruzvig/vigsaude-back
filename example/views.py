@@ -19,7 +19,8 @@ import json
 def login(request):
         body_unicode = request.body.decode('utf-8')  
         body = json.loads(body_unicode)   
-        response = JsonResponse(body)   
+        response = JsonResponse(body)  
+        print(response) 
         return HttpResponse(response, content_type="application/json", status=200)
 
     

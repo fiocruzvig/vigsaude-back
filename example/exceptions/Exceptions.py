@@ -41,14 +41,21 @@ def require_post(function):
 
              for key in patterns:
                  if not login_form.is_valid(patterns[key][1], key):
-                     list_api_errors.append(ApiErrors(patterns[key][0], "Campo Inválido"))
+                     list_api_errors.append(ApiErrors(patterns[key][0], "Campo Invalido"))
         
              if len(list_api_errors) != 0:
                 
                 api_errors_dict = [api.api_errors_to_list() for api in list_api_errors]
-                response = json.dumps(api_errors_dict)
-                json_response = json.loads(response)
-                return HttpResponse(json_response, content_type="application/json", status=400)  
+                response = JsonResponse(api_errors_dict, safe=False)
+                ''''
+                    print(api_errors_dict)
+                    response = json.dumps(api_errors_dict)
+                    print(response)
+                    json_response = json.loads(response)
+                '''
+                
+                #r = JsonResponse(json_response) 
+                return HttpResponse(response, content_type="application/json", status=400)  
         return function(request, *args, **kwargs)
     return wrapped_view
 
