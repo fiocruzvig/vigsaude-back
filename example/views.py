@@ -8,20 +8,13 @@ from example.exceptions.Exceptions import require_post
 import json
 
 
-
-
-
-
-
 @csrf_exempt
 @require_post
 @require_http_methods(["POST"])
 def login(request):
         body_unicode = request.body.decode('utf-8')  
-        body = json.loads(body_unicode)   
-        response = JsonResponse(body)  
-        print(response) 
-        return HttpResponse(response, content_type="application/json", status=200)
+        body = json.loads(body_unicode)    
+        return HttpResponse(JsonResponse({'status': 'OK', 'message':'Sucesso'}), content_type="application/json", status=200)
 
     
   
