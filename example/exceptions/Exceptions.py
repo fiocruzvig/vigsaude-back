@@ -4,7 +4,7 @@ import json
 from  example.LoginFormRequest.loginFormRequest import LoginFormRequest
 
 
-def require_login(function):
+def require_post(function):
     def wrapped_view(request, *args, **kwargs):
         
         if request.method != 'POST':
