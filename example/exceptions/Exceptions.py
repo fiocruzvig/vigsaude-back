@@ -11,9 +11,6 @@ def set_errors(api, list=None):
         list_api_errors = []
         list_api_errors.append(api)
     
-    
-    
-    
     api_errors_dict = [api.api_errors_to_list() for api in list_api_errors]
     response = json.dumps(api_errors_dict)
     json_response = json.loads(response)
@@ -25,18 +22,24 @@ def set_errors(api, list=None):
 
 def require_post(function):
     def wrapped_view(request, *args, **kwargs):
+        print("dsadsa")
         
         if request.method != 'POST':
             json_response = set_errors(ApiErrors("field", "Método HTTP Inválido"))
             return HttpResponse(json_response, content_type="application/json", status=405)
+        
+        elif not request.body:
+            json_response = set_errors(ApiErrors("field", "Requisição sem Corpo"))
+            return HttpResponse(json_response, content_type="application/json", status=400)
+
+        
         
         
         '''
         
       
         if not request.body:
-            json_response = set_errors(ApiErrors("field", "Requisição sem Corpo"))
-            return HttpResponse(json_response, content_type="application/json", status=400)
+            
 
         
         body_unicode = request.body.decode('utf-8')  
