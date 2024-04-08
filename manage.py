@@ -4,6 +4,8 @@ import sys
 
 
 def main():
+
+   
   
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vercel_app.prod')
     try:
