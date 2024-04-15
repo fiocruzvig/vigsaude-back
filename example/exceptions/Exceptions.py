@@ -13,14 +13,6 @@ def require_post(function):
         elif not request.body:
             return HttpResponse(JsonResponse({'status': 'Erro','message':'Requisição sem Corpo'}), content_type="application/json", status=400)
         
-        else:
-            data = json.loads(request.body)
-            form = LoginFormRequest(data)
-        
-            if not form.is_valid():
-                errors = dict(form.errors.items())
-                return HttpResponse(JsonResponse({'status': 'Erro', 'message': 'Erros de Validação', 'errors': errors}),  content_type="application/json", status= 400)
-                
         return function(request, *args, **kwargs)
     return wrapped_view
 
