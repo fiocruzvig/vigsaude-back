@@ -1,11 +1,9 @@
-from example.admin import User
-
+from django.contrib.auth import authenticate
 
 class LoginService:
     def __init__(self,):
-        pass
+       pass
     
     def auth(self, username, password):
-        user = User()
-        return user.auth(username, password)
+        return authenticate(username=username, password=password)
         
