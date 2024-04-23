@@ -5,7 +5,7 @@ from .base import *
 load_dotenv() 
 
 
-SECRET_KEY = os.getenv("API_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
