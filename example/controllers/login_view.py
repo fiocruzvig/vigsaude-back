@@ -1,8 +1,6 @@
 from django.http import HttpResponse
 import json
 from django.http import JsonResponse
-from example.dtos.response.user_response import UserResponse
-from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 from  example.dtos.request.loginFormRequest import LoginFormRequest
