@@ -7,8 +7,16 @@
   ],
   "routes": [
     {
+      "handle": "filesystem",
+      "src": "/(.*)",
+      "filesystem": {
+        "path": "/staticfiles"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "vercel_app/wsgi.py"
     }
   ]
 }
+
