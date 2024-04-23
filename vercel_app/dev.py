@@ -12,7 +12,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 DATABASES = {
 
     'default':{
-        'ENGINE': 'django.db.backends.postgresql_psycopg',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('NAME'),
         'USER':os.getenv('USER'),
         'PASSWORD':os.getenv('PASSWORD'),
