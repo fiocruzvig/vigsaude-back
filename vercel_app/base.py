@@ -6,7 +6,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
-    'tokens',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
