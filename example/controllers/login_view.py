@@ -7,8 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 from  example.dtos.request.loginFormRequest import LoginFormRequest
 from example.services.login_service import LoginService
-from django.core.serializers import serialize
-from django.contrib.auth import login
+
 
 import json
 
