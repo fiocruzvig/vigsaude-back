@@ -15,9 +15,13 @@ class CreateCSVFILE:
     
     def create_path(self, path):
          csv_path = os.path.join(path, 'output.csv')
-
+         
+         '''
+         
          if not os.path.exists(path):
                 os.makedirs(path)
+         '''
+
          
          with open(csv_path, 'w') as csv_file:
                 csv_file.write(self._buffer)
