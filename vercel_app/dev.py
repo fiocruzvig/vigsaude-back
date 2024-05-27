@@ -10,8 +10,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 DATABASES = {
-
-    'default':{
+      'default':{
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('NAME'),
         'USER':os.getenv('USER'),
