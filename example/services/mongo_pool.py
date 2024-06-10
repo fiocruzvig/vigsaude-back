@@ -29,7 +29,7 @@ class MongoPool:
         return self.client
     
     def get_db(self):
-        return self.client["admin"]
+        return self.client["fiocruz"]
     
     def get_collection(self, db):
         #db.createColletion("teste")
