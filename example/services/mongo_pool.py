@@ -14,7 +14,7 @@ class MongoPool:
    
     def connect(self, ):
         uri = "{0}://{1}:{2}@{3}:{4}/".format(self.driver, self.user , self.pwd,  self.host, self.port)
-        if dev.MONGO_DATABASE["PORT"] == '':
+        if  self.port is None:
             uri = "{0}://{1}:{2}@{3}/".format(self.driver, self.user , self.pwd,  self.host)
 
         client = MongoClient(uri)
