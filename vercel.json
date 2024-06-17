@@ -4,9 +4,6 @@
       "src": "vercel_app/wsgi.py",
       "use": "@vercel/python"
     },
-    {
-      "src": "build_files.sh"
-    }
   ],
   "routes": [
     {
