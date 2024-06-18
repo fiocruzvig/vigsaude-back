@@ -19,8 +19,6 @@ class HomeView(APIView):
 
        
       def get(self, request):
-          
-         
           return HttpResponse(JsonResponse({'status': 'OK', 'message':'Sucesso'}), content_type="application/json", status=200)
 
       def post(self, request):
@@ -37,6 +35,7 @@ class HomeView(APIView):
           file = request.FILES['xls_file']
           
           db = mongo_pool.get_db()
+       
           collection = mongo_pool.get_collection(db)
           mongo_service = MongoService()
           mongo_service.insert(file, collection)

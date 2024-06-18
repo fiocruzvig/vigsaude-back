@@ -3,13 +3,9 @@ from dotenv import load_dotenv
 import os
 from .base import *
 load_dotenv() 
-
-
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
-
-
 MONGO_DATABASE = {
       'DRIVER': os.environ.get("MONGO_DRIVER"),
       'USER': os.environ.get('MONGO_USER'),
@@ -17,8 +13,6 @@ MONGO_DATABASE = {
       'HOST':os.environ.get('MONGO_HOST'),
       'PORT':''
 }
-
-
 DATABASES = {
 
     'default':{

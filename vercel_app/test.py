@@ -1,4 +1,5 @@
 import os
+from django.conf import settings
 
 from dotenv import load_dotenv
 from .base import *
@@ -7,19 +8,13 @@ load_dotenv()
 SECRET_KEY = os.getenv('API_KEY')
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
-
-
-
-
 MONGO_DATABASE = {
-      'DRIVER': os.getenv("MONGO_DRIVER"),
-      'USER': os.getenv('MONGO_USER'),
-      'PASSWORD':os.getenv('MONGO_PASSWORD'),
-      'HOST':os.getenv('MONGO_HOST'),
-      'PORT':os.getenv('MONGO_PORT')
+      'DRIVER': os.getenv('DRIVER_MONGO'),
+      'USER': os.getenv('USER_MONGO'),
+      'PASSWORD':os.getenv('PASSWORD_MONGO'),
+      'HOST':os.getenv('HOST_MONGO'),
+      'PORT':' '
 }
-
-
 DATABASES = {
         'default':{
         'ENGINE': 'django.db.backends.postgresql',
