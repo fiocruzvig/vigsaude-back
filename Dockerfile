@@ -19,4 +19,4 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Adiciona comando para iniciar o servidor Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--settings=vercel_app.dev"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--settings=vercel_app.docker"]

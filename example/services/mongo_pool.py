@@ -1,4 +1,4 @@
-from vercel_app import dev, test, prod
+from vercel_app import dev, test, prod, docker
 from pymongo.mongo_client import MongoClient
 from django.conf import settings
 import os
@@ -7,13 +7,19 @@ class MongoPool:
 
     def __init__(self, ):
 
-        #vercel_app.test
-        if  os.environ["DJANGO_SETTINGS_MODULE"] == 'vercel_app.dev':
+        if  os.environ["DJANGO_SETTINGS_MODULE"] == 'vercel_app.dev' :
             self.driver = dev.MONGO_DATABASE["DRIVER"]
             self.user = dev.MONGO_DATABASE["USER"]
             self.pwd = dev.MONGO_DATABASE["PASSWORD"]
             self.host = dev.MONGO_DATABASE["HOST"]
             self.port = dev.MONGO_DATABASE["PORT"]
+            self.client = None
+        elif  os.environ["DJANGO_SETTINGS_MODULE"] == 'vercel_app.docker':
+            self.driver = docker.MONGO_DATABASE["DRIVER"]
+            self.user = docker.MONGO_DATABASE["USER"]
+            self.pwd = docker.MONGO_DATABASE["PASSWORD"]
+            self.host = docker.MONGO_DATABASE["HOST"]
+            self.port = docker.MONGO_DATABASE["PORT"]
             self.client = None
         else: 
             self.driver = test.MONGO_DATABASE["DRIVER"]
